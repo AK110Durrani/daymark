@@ -1,0 +1,24 @@
+kind = "mobile"
+previewPath = "/daymark/"
+title = "Daymark"
+description = "An offline-first personal task planner for organizing today, upcoming work, history, and activity without requiring an account or paid service."
+version = "1.0.0"
+id = "artifacts/daymark"
+router = "expo-domain"
+
+[[services]]
+name = "expo"
+ensurePreviewReachable = "/status"
+paths = [ "/daymark/" ]
+localPort = 23347
+
+[services.development]
+run = "pnpm --filter @workspace/daymark run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/daymark", "run", "build" ]
+run = [ "pnpm", "--filter", "@workspace/daymark", "run", "serve" ]
+
+[services.env]
+PORT = "23347"
+BASE_PATH = "/daymark/"
